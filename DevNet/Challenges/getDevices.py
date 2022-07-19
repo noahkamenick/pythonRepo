@@ -13,36 +13,36 @@ def getBody():
     toke = getToken()
     device_headers = {
 
-    "Content-Type":"application/json",
-    "X-Auth-Token": toke #use this, DO NOT USE AUTHORIZATION
+        "Content-Type": "application/json",
+        "X-Auth-Token": toke  # use this, DO NOT USE AUTHORIZATION
 
     }
 
     # Create GET Request
 
-    resp = requests.get(f"{device_api_path}/intent/api/v1/network-device", headers=device_headers,verify=False)
-    
+    resp = requests.get(f"{device_api_path}/intent/api/v1/network-device",
+                        headers=device_headers, verify=False)
+
     # Raise error if fail, otherwise, extract information
-    
+
     resp.raise_for_status()
     body = resp.json()
     return body
 
 
-def getDeviceIPandID(jsonBody):
+def getDeviceIPandID(jsonBody): 
     ip = jsonBody
 
     for loopIndex in range(len(ip['response'])):
-        print(ip['response'][loopIndex]["managementIpAddress"] + " -> " + ip['response'][loopIndex]['id'])
+        print(ip['response'][loopIndex]["managementIpAddress"] +
+              " -> " + ip['response'][loopIndex]['id']) #Format ip and id
+
 
 def main():
-    #deviceList = getDeviceList()
-    #print(deviceList)
-    getDeviceIPandID(getBody())
+    deviceList = getBody()
+    print(json.dumps(deviceList, indent=2)) #Pretty print json payload into terminal
+    getDeviceIPandID(deviceList)
+
 
 if __name__ == "__main__":
     main()
-
-
-
-
