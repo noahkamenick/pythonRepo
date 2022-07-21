@@ -1734,3 +1734,4 @@ DevNet/devnet/lib/python3.9/site-packages/urllib3-1.26.10.dist-info/WHEEL
 DevNet/dnacAuth/__pycache__/auth.cpython-39.pyc
 DevNet/dnacAuth/__pycache__/dnac_config.cpython-39.pyc
 DevNet/dnacAuth/__pycache__/printDeviceList.cpython-39.pyc
+DevNet/devnet/
